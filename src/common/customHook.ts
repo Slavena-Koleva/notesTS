@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useOutletContext } from "react-router";
+import { Note } from "../App";
 
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
   const [value, setValue] = useState<T>(() => {
@@ -19,4 +21,10 @@ export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
   }, [value, key]);
 
   return [value, setValue] as [T, typeof setValue];
+}
+
+
+
+export function useNote() {
+  return useOutletContext<Note>();
 }
